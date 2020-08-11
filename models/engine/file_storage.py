@@ -19,7 +19,6 @@ class FileStorage:
                     cls_dict[k] = v
             return cls_dict
         return self.__objects
-        
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
