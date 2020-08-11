@@ -346,7 +346,6 @@ def is_int(arg):
         return False
 
 
-
 def is_float(arg):
     """check if string is float"""
     try:
