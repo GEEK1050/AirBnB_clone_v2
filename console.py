@@ -336,23 +336,21 @@ class HBNBCommand(cmd.Cmd):
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
+    def is_int(arg):
+        """check if string is integer"""
+        try:
+            int(arg)
+            return True
+        except ValueError:
+            return False
 
-def is_int(arg):
-    """check if string is integer"""
-    try:
-        int(arg)
-        return True
-    except:
-        return False
-
-
-def is_float(arg):
-    """check if string is float"""
-    try:
-        float(arg)
-        return True
-    except:
-        return False
+    def is_float(arg):
+        """check if string is float"""
+        try:
+            float(arg)
+            return True
+        except ValueError:
+            return False
 
 
 if __name__ == "__main__":
