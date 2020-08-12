@@ -119,7 +119,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = args.split(" ")
-        print(args)
         if args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
@@ -135,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             elif is_float(param_value):
                 param_value = float(param_value)
             else:
-                param_value = param_value.strip('"').replace("_", " ")
+                param_value = param_value.strip("'").strip("'")
 
             setattr(new_instance, param_name, param_value)
         storage.save()
@@ -336,21 +335,23 @@ class HBNBCommand(cmd.Cmd):
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
-    def is_int(arg):
-        """check if string is integer"""
-        try:
-            int(arg)
-            return True
-        except Exception:
-            return False
 
-    def is_float(arg):
-        """check if string is float"""
-        try:
-            float(arg)
-            return True
-        except Exception:
-            return False
+def is_int(arg):
+    """check if string is integer"""
+    try:
+        int(arg)
+        return True
+    except Exception:
+        return False
+
+
+def is_float(arg):
+    """check if string is float"""
+    try:
+        float(arg)
+        return True
+    except Exception:
+        return False
 
 
 if __name__ == "__main__":
