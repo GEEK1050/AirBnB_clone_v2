@@ -135,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
             elif is_float(param_value):
                 param_value = float(param_value)
             else:
-                param_value = param_value.strip("'").strip('"')
+                param_value = param_value.strip('"').replace("_", " ")
 
             setattr(new_instance, param_name, param_value)
         storage.save()
@@ -341,7 +341,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             int(arg)
             return True
-        except ValueError:
+        except Exception:
             return False
 
     def is_float(arg):
@@ -349,7 +349,7 @@ class HBNBCommand(cmd.Cmd):
         try:
             float(arg)
             return True
-        except ValueError:
+        except Exception:
             return False
 
 
