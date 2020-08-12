@@ -134,7 +134,9 @@ class HBNBCommand(cmd.Cmd):
             elif is_float(param_value):
                 param_value = float(param_value)
             else:
-                param_value = param_value.strip("'").strip("'")
+                param_name = param_name.replace("\\", "")
+                param_value = param_value.strip('"').strip("'")
+                param_vlaue = param_value.replace("_", " ")
 
             setattr(new_instance, param_name, param_value)
         storage.save()
