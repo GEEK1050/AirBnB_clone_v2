@@ -118,10 +118,26 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        args = args.split(" ")
+        print(args)
+        if args[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[args]()
+
+        new_instance = HBNBCommand.classes[args[0]]()
+        for param in args[1:]:
+            param = param.split("=")
+            param_name = param[0]
+            param_value = param[1]
+
+            if is_int(param_value):
+                param_value = int(param_value)
+            elif is_float(param_value):
+                param_value = float(param_value)
+            else:
+                param_value = param_value.strip("'").strip('"')
+
+            setattr(new_instance, param_name, param_value)
         storage.save()
         print(new_instance.id)
         storage.save()
@@ -319,6 +335,25 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
+
+def is_int(arg):
+    """check if string is integer"""
+    try:
+        int(arg)
+        return True
+    except:
+        return False
+
+
+def is_float(arg):
+    """check if string is float"""
+    try:
+        float(arg)
+        return True
+    except:
+        return False
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
