@@ -23,4 +23,4 @@ class User(BaseModel, Base):
     first_name = Column(String(128))
     last_name = Column(String(128))
 
-    # places = relationship("Place", cascade="delete, all", backref="user")
+    places = relationship("Place", cascade="delete, all", backref="user")
