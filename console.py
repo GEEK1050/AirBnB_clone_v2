@@ -2,6 +2,7 @@
 """ Console Module """
 import cmd
 import sys
+from datetime import datetime
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
@@ -134,14 +135,13 @@ class HBNBCommand(cmd.Cmd):
             elif is_float(param_value):
                 param_value = float(param_value)
             else:
-                param_name = param_name.replace("\\", "")
+                param_name = param_name.replace("\"", "")
                 param_value = param_value.strip('"').strip("'")
                 param_vlaue = param_value.replace("_", " ")
 
             setattr(new_instance, param_name, param_value)
         storage.save()
         print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
@@ -223,11 +223,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all(eval(args)).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 print_list.append(str(v))
 
         print(print_list)
