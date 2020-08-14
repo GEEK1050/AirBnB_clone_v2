@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
                 param_vlaue = param_value.replace("_", " ")
 
             setattr(new_instance, param_name, param_value)
-        storage.save()
+        new_instance.save()
         print(new_instance.id)
 
     def help_create(self):
