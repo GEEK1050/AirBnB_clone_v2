@@ -9,8 +9,8 @@ def do_pack():
     """compress file"""
     day = datetime.today()
     path = "versions/web_static_{}.tgz".format(day.isoformat())
-    local("mkdir -p versions")
-    if local("tar -vfzc {} web_static".format(path)):
+
+    if local("mkdir -p versions; tar -vfzc {} web_static".format(path)):
         return path
     else:
         return None
