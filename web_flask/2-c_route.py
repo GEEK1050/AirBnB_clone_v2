@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """display Hello HBNB / root
    display HBNB /hbnb root
-   display 
+   display
 """
 from flask import Flask
 
@@ -18,6 +18,7 @@ def print_hello():
 def print_hbnb():
     """return text to display using flask"""
     return "HBNB"
+
 
 @app.route("/c/<text>", strict_slashes=False)
 def print_text(text):
