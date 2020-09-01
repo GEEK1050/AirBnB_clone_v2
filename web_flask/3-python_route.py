@@ -27,6 +27,7 @@ def print_text(text):
     return "C {}".format(text.replace('_', ' '))
 
 
+@app.route("/python/", defaults={"text": "is cool"})
 @app.route("/python/(<text>)", strict_slashes=False)
 def print_python(text):
     """return text to display using flask"""
