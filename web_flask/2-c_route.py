@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """display Hello HBNB / root
    display HBNB /hbnb root
-   display
+   display /python/(<text>)
 """
 from flask import Flask
 
